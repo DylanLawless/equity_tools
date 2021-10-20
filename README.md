@@ -5,9 +5,9 @@ Methods for statistics-based finance management
 ## Home buyer
 Input your financial statments in a simple format and get instant summaries on income/expense, calculations for home buyers, and time-based safety limits for planning over 1-10 years.
 
-* Repo: [home_buyer](home_buyer/)
-* Example require data: [finance statement](home_buyer/data/)
-* R code: [home_buyer](home_buyer/src)
+* Repo: [home_buyer/](home_buyer/)
+* Example require data: [home_buyer/example finance statement](home_buyer/data/)
+* R code: [home_buyer/src/](home_buyer/src/)
 
 This repository shows example dataset for:
 * 2 persons 
