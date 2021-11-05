@@ -3,6 +3,7 @@ library(ggplot2)
 library(lubridate)
 library(tidyr)
 library(zoo)
+library(plotly)
 
 # Import financial data ----
 person_1 <- read.csv("../data/example_statement_1.csv", stringsAsFactors=FALSE, header = TRUE, na.strings=c("","NA"))
@@ -60,6 +61,7 @@ p1 <-
     legend.position="none")
 
 p1
+ggplotly(p1)
 
 # monthly change calculate ----
 df_debit <- 
@@ -107,9 +109,11 @@ p2 <-
 #  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position="bottom")+
   labs(y="Monthly change")
 p2
+ggplotly(p2)
 
 # combined plot  ----
 require(gridExtra)
+
 grid.arrange(p1, p2, ncol=1, 
                    heights=c(2,2),
                    bottom = "Top - total balance over time. Bottom - month income/expense.
@@ -362,7 +366,7 @@ future_10$equity <- cumsum(future_10$saving)
 
 # guaranteed equity plot ----
 p4 <- future_10 %>% 
-  ggplot(aes(x = Date, y = equity))+
+  ggplot(aes(x = Date_10, y = equity))+
   geom_point(alpha=0.3, size = 1 )+
   geom_smooth(aes(color = cols1[1])) +
   scale_y_continuous(labels = function(x) format(x, scientific = FALSE))+
@@ -386,3 +390,4 @@ grid.arrange(p1, p2, p_comb_month, p_comb_day, p3, p4, ncol=1,
              E: forcast guaranteed equity with insurance (dotted line - switch to insured income).
              F: forcast 10 year with fulltime, modest contract."
              ) # ../img/equity_combined.pdf 24x8
+
